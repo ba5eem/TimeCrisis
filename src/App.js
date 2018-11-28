@@ -1,27 +1,95 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as d3 from 'd3';
+import eventDrops from 'event-drops';
+import { updateCommitsInformation, repositoriesData, onMouseOverTootip, onMouseOutTooltip, getDate } from './utils';
+import './style.css';
+import './demo.css';
+
+const repositories = require('./data.json');
+const eventDropsDIV = '#eventdrops-demo';
+const logo = require('./logo.png');
+
+
+
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+
+    }
+  }
+
+  componentDidMount() {
+    const chart = eventDrops({
+      d3,
+        zoom: {
+            onZoomEnd: () => updateCommitsInformation(chart),
+        },
+        drop: {
+            date: d => getDate(d),
+            onMouseOver: commit => onMouseOverTootip(commit),
+            onMouseOut: () => onMouseOutTooltip()
+          },
+      });
+
+
+    d3.select(eventDropsDIV)
+      .data([repositoriesData(repositories)])
+      .call(chart);
+    updateCommitsInformation(chart);
+  }
+
+
+
+
+
+
+
+
+
+
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <div style={styles.header}>
+          <img src={logo} alt="logo" style={styles.logo} />
+        </div>
+        <div id="eventdrops-demo" style={{width: "90%"}}>
+        </div>
+        <p className="infos">
+            <span id="numberCommits"></span> project(s) <span className="light">found between</span> 
+            <br />
+
+            <span id="zoomStart"></span>
+            <span className="light">and</span>
+            <span id="zoomEnd"></span>
+
+        </p>
+
+        <footer>
+            <p>
+                K.I.A.N: Kinetic Information Assurance Network developed for the ARL
+            </p>
+        </footer>
+
+
       </div>
     );
+  }
+}
+
+
+const styles = {
+  header:{
+    display: 'flex',
+
+  },
+  logo: {
+    width: 200,
+    height: 100
   }
 }
 
