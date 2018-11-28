@@ -4,8 +4,8 @@ import eventDrops from 'event-drops';
 import { updateCommitsInformation, repositoriesData, onMouseOverTootip, onMouseOutTooltip, getDate } from './utils';
 import './style.css';
 import './demo.css';
+import { repositories } from './data.js';
 
-const repositories = require('./data.json');
 const eventDropsDIV = '#eventdrops-demo';
 const logo = require('./logo.png');
 
@@ -50,11 +50,8 @@ class App extends Component {
       .call(chart);
     updateCommitsInformation(chart);
 
-    let svg = d3.select("svg"); // TODO: figure out how to manipulate table size
-  }
 
-
-
+}
 
 
 
@@ -64,6 +61,7 @@ class App extends Component {
 
 
   render() {
+
     return (
       <div>
         <div style={styles.header}>
@@ -72,7 +70,7 @@ class App extends Component {
         <div id="eventdrops-demo" style={{width: "90%"}}>
         </div>
         <p className="infos">
-            <span id="numberCommits"></span> project(s) <span className="light">found between</span> 
+            <span id="numberCommits"></span> project days <span className="light">found between</span> 
             <br />
 
             <span id="zoomStart"></span>

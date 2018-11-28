@@ -52,15 +52,12 @@ export const updateCommitsInformation = chart => {
 export const toolTipHtml = (commit) => `
     <div class="commit">
     <div class="content">
-        <h3 class="message">${commit.message}</h3>
+        <h3 class="message">${commit.projectName}</h3>
         <p>
-            <a href="https://www.github.com/ba5eem" class="author">baseemLink</a>
-            on <span class="date">${humanizeDate(
+            <a href="https://www.github.com/ba5eem" class="author">baseem@gmail.com</a>
+            <span class="date">${humanizeDate(
                 new Date(commit.date)
-            )}</span> -
-            <a class="sha" href="${
-                commit.sha
-            }">${commit.sha.substr(0, 10)}</a>
+            )}</span> - ${commit.message}
         </p>
     </div>
 `
