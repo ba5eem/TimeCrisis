@@ -54,7 +54,7 @@ export const toolTipHtml = (commit) => `
     <div class="content">
         <h3 class="message">${commit.projectName}</h3>
         <p>
-            <a href="https://www.github.com/ba5eem" class="author">baseem@gmail.com</a>
+            <a href="https://www.github.com/ba5eem" class="author">email/link todrive</a>
             <span class="date">${humanizeDate(
                 new Date(commit.date)
             )}</span> - ${commit.message}
