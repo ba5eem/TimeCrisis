@@ -54,9 +54,7 @@ export const toolTipHtml = (commit) => `
     <div class="content">
         <h3 class="message">${commit.message}</h3>
         <p>
-            <a href="https://www.github.com/${
-                commit.author.name
-            }" class="author">${commit.author.name}</a>
+            <a href="https://www.github.com/ba5eem" class="author">baseemLink</a>
             on <span class="date">${humanizeDate(
                 new Date(commit.date)
             )}</span> -
@@ -89,7 +87,7 @@ export const onMouseOverTootip = (commit) => {
 export const onMouseOutTooltip = () => {
   tooltip
       .transition()
-      .duration(500)
+      .duration(1000)
       .style('opacity', 0)
       .style('pointer-events', 'none');
 }

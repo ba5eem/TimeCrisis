@@ -9,6 +9,16 @@ const repositories = require('./data.json');
 const eventDropsDIV = '#eventdrops-demo';
 const logo = require('./logo.png');
 
+let margin = {
+      top: 20,
+      right: 10,
+      bottom: 20,
+      left: 10
+  }
+let axisHeight = 30;
+let timeLabelHeight = 30;
+let lineHeight = 80;
+let lineNameWidth = 0;
 
 
 
@@ -39,6 +49,8 @@ class App extends Component {
       .data([repositoriesData(repositories)])
       .call(chart);
     updateCommitsInformation(chart);
+
+    let svg = d3.select("svg"); // TODO: figure out how to manipulate table size
   }
 
 
@@ -64,7 +76,7 @@ class App extends Component {
             <br />
 
             <span id="zoomStart"></span>
-            <span className="light">and</span>
+            <span className="light"> and </span>
             <span id="zoomEnd"></span>
 
         </p>
