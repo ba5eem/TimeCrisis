@@ -4,6 +4,7 @@ import * as d3 from 'd3';
 
 // Example display: September 4 1986 8:30 PM
 export const humanizeDate = (date) => {
+  console.log(date);
   const monthNames = [
       'Jan.',
       'Feb.',
@@ -33,7 +34,9 @@ export const tooltip = d3
     .style('opacity', 0)
     .style('pointer-events', 'auto');
 
-
+let scaleOriginal = d3.scaleTime()
+    .domain([new Date("Jan 25 2019 16:1 +0000"), new Date("May 25 2019 16:1 +0000")])   
+console.log(scaleOriginal.domain()[0]);
 
 export const updateCommitsInformation = chart => {
 
